@@ -1,4 +1,5 @@
 *.mp4
 *.vscode
 *.exe
+*.exe~
 *.txt

@@ -12,7 +12,7 @@ func addStream(ctx context.Context, client *firestore.Client, newDoc string, url
 			"url":    url,
 			"user":   user,
 			"pass":   pass,
-			"status": "streaming",
+			"status": "readyToStream",
 	})
 	if err != nil {
 			// Handle any errors in an appropriate way, such as returning them.
