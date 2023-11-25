@@ -13,10 +13,15 @@ func runFFMPEG(url string) error {
 
 	for {
 
-		// ffmpeg command, h264 video codec
+		// // ffmpeg command, h264 video codec
+		// cmd := exec.Command(
+		// 	"ffmpeg", "-f", "v4l2 ", "-input_format", "h264","-i", "/dev/video1", "-c:v", "libx264",
+		// 	"-bf", "0", "-f", "rtsp", url,
+		// )
 		cmd := exec.Command(
-			"ffmpeg", "-f", "v4l2 ", "-input_format", "h264","-i", "/dev/video1", "-c:v", "libx264",
-			"-bf", "0", "-f", "rtsp", url,
+			"ffmpeg", "-f", "v4l2", "-i", "/dev/video1", "-c:v", "libx264", "-profile:v", "baseline",
+			"-preset", "ultrafast", "-pix_fmt", "yuv420p", "-b:v", "500k", "-r", "15", "-f", "rtsp",
+			url,
 		)
 
 		err := cmd.Run()
