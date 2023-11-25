@@ -8,7 +8,7 @@ import (
 
 func runFFMPEG(url string) error {
 
-	maxAttempts := 5
+	maxAttempts := 2
 	attempt := 1
 
 	for {
