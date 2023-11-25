@@ -9,7 +9,7 @@ import (
 
 func streamListenReceive(ctx context.Context, client *firestore.Client, newDoc string) (bool, error) {
 
-	maxAttempts := 10
+	maxAttempts := 60
 	attempts := 1
 
 	for {
