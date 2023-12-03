@@ -2,15 +2,16 @@ package main
 
 import (
 	"context"
-	"time"
+	//"time"
 
 	"cloud.google.com/go/firestore"
 )
 
 func streamListenReceive(ctx context.Context, client *firestore.Client, newDoc string) (bool, error) {
 
-	maxAttempts := 60
-	attempts := 1
+	//maxAttempts := 60
+	//attempts := 1
+	// add maxAttempts back in when mark stream as broken when reached
 
 	for {
 		dsnap, err := client.Collection("streams").Doc(newDoc).Get(ctx)
@@ -23,12 +24,12 @@ func streamListenReceive(ctx context.Context, client *firestore.Client, newDoc s
 			return false, nil
 		}
 
-		if attempts >= maxAttempts {
-			return true, nil
-		}
+		//if attempts >= maxAttempts {
+		//	return true, nil
+		//}
 
 		// if ready to receive doesn't come for 5 sec, write as broken and rerun ?
-		attempts++
-		time.Sleep(1 * time.Second)
+		//attempts++
+		//time.Sleep(1 * time.Second)
 	}
 }
